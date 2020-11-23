@@ -1,5 +1,7 @@
 ﻿using ConsoleApp.Models;
+using SudokuSolver.ConsoleApp.Models;
 using System;
+using System.Linq;
 
 namespace ConsoleApp
 {
@@ -237,8 +239,43 @@ namespace ConsoleApp
                 " , , ,4,8, ,6, , "
             };
 
+            Console.WriteLine("This is the Sudoku we will try to solve:");
+            DisplaySudokuInConsole(Puzzle.GetFromArray(puzzle));
+
             // Create an instance of our Sudoku class
-            var solver = new Models.SudokuSolver(puzzle);
+            var sudokuSolverViewModel = new Models.SudokuSolver(Puzzle.GetFromArray(puzzle)).ViewModel;
+
+            Console.WriteLine("\nSolutions will appear below:\n");
+            foreach (var p in sudokuSolverViewModel.Solutions)
+            {
+                DisplaySudokuInConsole(p);
+            }
+
+            Console.WriteLine("Total unique solutions: " + sudokuSolverViewModel.TotalUniqueSolutions + ".");
+            Console.WriteLine("Total analytical entries required: " + sudokuSolverViewModel.TotalAnalyticalEntries + ".");
+            Console.WriteLine("Total hypothetical guesses required: " + sudokuSolverViewModel.TotalHypothesis + ".");
+            Console.WriteLine("Total processing duration: " + sudokuSolverViewModel.ProcessingDuration);
+
+            System.Threading.Thread.Sleep(10000000);
+        }
+
+        private static void DisplaySudokuInConsole(Puzzle puzzle)
+        {
+            Console.WriteLine("\nPuzzle {Solved:" + puzzle.Solved + ", CanSolve: " + puzzle.CanSolve + "}");
+            for (int x = 0; x < 9; x++)
+            {
+                Console.WriteLine(
+                    " " + puzzle.Array[x][0].ToString() + " " +
+                    " " + puzzle.Array[x][1].ToString() + " " +
+                    " " + puzzle.Array[x][2].ToString() + " " +
+                    " " + puzzle.Array[x][3].ToString() + " " +
+                    " " + puzzle.Array[x][4].ToString() + " " +
+                    " " + puzzle.Array[x][5].ToString() + " " +
+                    " " + puzzle.Array[x][6].ToString() + " " +
+                    " " + puzzle.Array[x][7].ToString() + " " +
+                    " " + puzzle.Array[x][8].ToString() + "");
+            }
+            Console.WriteLine("\n");
         }
 
     }
