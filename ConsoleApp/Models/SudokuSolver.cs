@@ -13,7 +13,9 @@ namespace ConsoleApp.Models
         private int _PuzzleCount { get; set; }
         private DateTime _StartTime { get; set; }
         private DateTime _EndTime { get; set; }
+        private int _TotalAnalyticalEntries { get; set; }
         private int _TotalHypothesis { get; set; }
+        private int _TotalUniqueSolutions { get; set; }
         #endregion
 
         #region Constructors
@@ -23,7 +25,9 @@ namespace ConsoleApp.Models
         {
             _StartTime = DateTime.UtcNow;
             _EndTime = DateTime.UtcNow;
+            _TotalAnalyticalEntries = 0;
             _TotalHypothesis = 0;
+            _TotalUniqueSolutions = 0;
 
             _Puzzles = new List<Puzzle> ();
             var array = new int?[9][];
@@ -73,9 +77,12 @@ namespace ConsoleApp.Models
             Console.WriteLine("\nSolutions will appear below:\n");
             foreach (var p in _Puzzles.Where(x => x.Solved == true && x.CanSolve == true))
             {
+                _TotalUniqueSolutions++;
                 DisplaySudokuInConsole(p);
             }
 
+            Console.WriteLine("Total unique solutions: " + _TotalUniqueSolutions + ".");
+            Console.WriteLine("Total analytical entries required: " + _TotalAnalyticalEntries + ".");
             Console.WriteLine("Total hypothetical guesses required: " + _TotalHypothesis + ".");
             Console.WriteLine("Total processing duration: " + (DateTime.UtcNow - _StartTime));
 
@@ -221,6 +228,7 @@ namespace ConsoleApp.Models
 
         private void SetValueForCoordinate(Puzzle puzzle, int x, int y, int? value)
         {
+            _TotalAnalyticalEntries++;
             puzzle.Array[x][y] = value;
         }
 
