@@ -20,7 +20,10 @@ namespace ConsoleApp
             // START OF SUDOKU PUZZLE SAMPLES
 
             // Typical "Easy" puzzle
-            // 38 provided numbers - 1 possible outcome - 5 solution - max hypothesis of 2
+            // Total unique solutions: 1.
+            // Total analytical entries required: 43.
+            // Total hypothetical guesses required: 0.
+            // Total processing duration: 00:00:00.0289833
             //var puzzle = new string[9] {
             //    "9, ,8, , ,4, ,6,2",
             //    "3,1,2,6, , ,4, , ",
@@ -52,18 +55,28 @@ namespace ConsoleApp
             //    " , , ,1, , , , , "
             //};
 
+            // Non-Sudoku puzzle.  This is not a Sudoku because it has more than one solution.
+            // Total unique solutions: 8.
+            // Total analytical entries required: 12504.
+            // Total hypothetical guesses required: 4592.
+            // Total processing duration: 00:00:03.4016929
             //var puzzle = new string[9] {
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , ",
-            //    " , , , , , , , , "
+            //    " ,8, , , ,9,7,4,3",
+            //    " ,5, , , ,8, ,1, ",
+            //    " ,1, , , , , , , ",
+            //    "8, , , , ,5, , , ",
+            //    " , , ,8, ,4, , , ",
+            //    " , , ,3, , , , ,6",
+            //    " , , , , , , ,7, ",
+            //    " ,3, ,5, , , ,8, ",
+            //    "9,7,2,4, , , ,5, "
             //};
 
+            // Hard Sudoku
+            // Total unique solutions: 1.
+            // Total analytical entries required: 20804.
+            // Total hypothetical guesses required: 5662.
+            // Total processing duration: 00:00:03.9428131
             //var puzzle = new string[9] {
             //    " ,2,9,1, , , ,6, ",
             //    " ,7, , , , , , ,5",
@@ -82,25 +95,31 @@ namespace ConsoleApp
             // to anyone but the most brilliant.For reference, most Sudoku grids are graded on a five - star scale, 
             // where five stars denotes the most challenging puzzles. According to this ranking system, 
             // Inkala rated Everest an eleven
-            // 21 provided numbers - 69853 possible outcomes - 1 solution - max hypothesis of 2
-            var puzzle = new string[9] {
-                "8, , , , , , , , ",
-                " , ,3,6, , , , , ",
-                " ,7, , ,9, ,2, , ",
-                " ,5, , , ,7, , , ",
-                " , , , ,4,5,7, , ",
-                " , , ,1, , , ,3, ",
-                " , ,1, , , , ,6,8",
-                " , ,8,5, , , ,1, ",
-                " ,9, , , , ,4, , "
-            };
+            // Total unique solutions: 1.
+            // Total analytical entries required: 215825.
+            // Total hypothetical guesses required: 75066.
+            // Total processing duration: 00:00:14.7659485
+            //var puzzle = new string[9] {
+            //    "8, , , , , , , , ",
+            //    " , ,3,6, , , , , ",
+            //    " ,7, , ,9, ,2, , ",
+            //    " ,5, , , ,7, , , ",
+            //    " , , , ,4,5,7, , ",
+            //    " , , ,1, , , ,3, ",
+            //    " , ,1, , , , ,6,8",
+            //    " , ,8,5, , , ,1, ",
+            //    " ,9, , , , ,4, , "
+            //};
 
             // Arto Inkala has made what he claims is the hardest sudoku puzzle ever. According to the Finnish puzzle maker 
             // "I called the puzzle AI Escargot, because it looks like a snail. Solving it is like an intellectual culinary pleasure." 
             // If you're open for the challenge, AI Escargot presumably requires you to wrap your brain around eight casual 
             // relationships simultaneously, whereas your everyday "very hard" sudoku piece, only require you to think about 
             // a meager one or two of these relationships at once.
-            // 24 provided numbers - 2795 possible outcomes - 1 solution - max hypothesis of 2
+            // Total unique solutions: 1.
+            // Total analytical entries required: 12553.
+            // Total hypothetical guesses required: 2800.
+            // Total processing duration: 00:00:03.4479183
             //var puzzle = new string[9] {
             //    "1, , , , ,7, ,9, ",
             //    " ,3, , ,2, , , ,8",
@@ -114,7 +133,10 @@ namespace ConsoleApp
             //};
 
             // The brainchild of Finnish mathematical whizz Arto Inkala, it took him three months to compile. 
-            // 23 provided numbers - 1009 possible outcomes - 1 solution - max hypothesis of 2
+            // Total unique solutions: 1.
+            // Total analytical entries required: 6349.
+            // Total hypothetical guesses required: 1017.
+            // Total processing duration: 00:00:02.8184742
             //var puzzle = new string[9] {
             //    " , ,5,3, , , , , ",
             //    "8, , , , , , ,2, ",
@@ -126,10 +148,12 @@ namespace ConsoleApp
             //    " , ,4, , , , ,3, ",
             //    " , , , , ,9,7, , "
             //};
-            // I tested this problem with each number missing.  This version is the most difficult version of this puzzle.
 
             // http://sw-amt.ws/sudoku/level-very-deep/zz-www.sudokuwiki.org-0177-base/zz-www.sudokuwiki.org-0177-base.html
-            // 23 provided numbers, 21685 possible outcomes - 1 solution - max hypothesis of 2
+            // Total unique solutions: 1.
+            // Total analytical entries required: 89827.
+            // Total hypothetical guesses required: 22299.
+            // Total processing duration: 00:00:07.5180742
             //var puzzle = new string[9] {
             //    " , , , ,7,3, ,6, ",
             //    " , , ,6, , ,4, ,9",
@@ -143,7 +167,10 @@ namespace ConsoleApp
             //};
 
             // http://sw-amt.ws/sudoku/level-very-deep/zz-www.sudokuwiki.org-0249-base/zz-www.sudokuwiki.org-0249-base.html
-            // 23 provided numbers - 100353 possible outcomes - 1 solution - max hypothesis of 2
+            // Total unique solutions: 1.
+            // Total analytical entries required: 338146.
+            // Total hypothetical guesses required: 106540.
+            // Total processing duration: 00:00:21.7591018
             //var puzzle = new string[9] {
             //    " ,4, ,7, , ,1, , ",
             //    " , , , ,2, , ,9, ",
@@ -157,7 +184,11 @@ namespace ConsoleApp
             //};
 
             // http://sw-amt.ws/sudoku/level-deep/xx-tarx0052-base/xx-tarx0052-base.html
-            // 21 provided numbers - 40799 possible outcomes - 1 solution - max hypothesis of 2
+            // 21 provided numbers
+            // Total unique solutions: 1.
+            // Total analytical entries required: 188450.
+            // Total hypothetical guesses required: 64096.
+            // Total processing duration: 00:00:13.3716503
             //var puzzle = new string[9] {
             //    " , , , , , , , ,2",
             //    " , ,8, , ,9,1, , ",
@@ -171,7 +202,11 @@ namespace ConsoleApp
             //};
 
             // https://www.free-sudoku.com/sudoku.php?dchoix=evil
-            // 17 provided numbers - 330543 possible outcomes - 1 solution - max hypothesis of 2
+            // 17 provided numbers
+            // Total unique solutions: 1.
+            // Total analytical entries required: 765032.
+            // Total hypothetical guesses required: 347818.
+            // Total processing duration: 00:00:47.5223786
             //var puzzle = new string[9] {
             //    " , , , ,9,3, , , ",
             //    "2, , , , , ,9, , ",
@@ -185,19 +220,22 @@ namespace ConsoleApp
             //};
 
             // Created by Jason Williams - 2020-03-12
-            // 23 provided numbers - 2383 possible outcomes - 1 solution - max hypothesis of 2
-            //var puzzle = new string[9] {
-            //    " , ,2, , ,8, , , ",
-            //    " ,4, , , ,6, , ,2",
-            //    " , , ,1,7, ,8, , ",
-            //    "7, , , , , , , , ",
-            //    " ,8, , , , , ,5, ",
-            //    " , ,9, , , , , ,3",
-            //    " , ,4, ,3,7, ,9, ",
-            //    "3,5, , , , , ,7, ",
-            //    " , , ,4,8, ,6, , "
-            //};
-            // I tested this problem with each number missing.  This version is the most difficult version of this puzzle.
+            // 23 provided numbers
+            // Total unique solutions: 1.
+            // Total analytical entries required: 10217.
+            // Total hypothetical guesses required: 2430.
+            // Total processing duration: 00:00:03.1837216
+            var puzzle = new string[9] {
+                " , ,2, , ,8, , , ",
+                " ,4, , , ,6, , ,2",
+                " , , ,1,7, ,8, , ",
+                "7, , , , , , , , ",
+                " ,8, , , , , ,5, ",
+                " , ,9, , , , , ,3",
+                " , ,4, ,3,7, ,9, ",
+                "3,5, , , , , ,7, ",
+                " , , ,4,8, ,6, , "
+            };
 
             // Create an instance of our Sudoku class
             var solver = new Models.SudokuSolver(puzzle);
