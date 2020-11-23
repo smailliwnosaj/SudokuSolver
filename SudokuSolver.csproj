@@ -47,6 +47,7 @@
     <Compile Include="ConsoleApp\Models\PotentialSolutions.cs" />
     <Compile Include="ConsoleApp\Models\Puzzle.cs" />
     <Compile Include="ConsoleApp\Models\SudokuSolver.cs" />
+    <Compile Include="ConsoleApp\Models\SudokuSolverViewModel.cs" />
     <Compile Include="ConsoleApp\Program.cs" />
   </ItemGroup>
   <ItemGroup />
