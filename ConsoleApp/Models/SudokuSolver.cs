@@ -12,104 +12,43 @@ namespace ConsoleApp.Models
         private int _IterationCount { get; set; }
         private int _PuzzleCount { get; set; }
         private DateTime _StartTime { get; set; }
-        private DateTime _EndTime { get; set; }
-        private int _TotalAnalyticalEntries { get; set; }
-        private int _TotalHypothesis { get; set; }
-        private int _TotalUniqueSolutions { get; set; }
+        
+        public SudokuSolverViewModel ViewModel { get; set; }
+        
         #endregion
 
         #region Constructors
         protected SudokuSolver() { }
 
-        public SudokuSolver(string[] rowCSVstrings)
+        public SudokuSolver(Puzzle puzzle)
         {
             _StartTime = DateTime.UtcNow;
-            _EndTime = DateTime.UtcNow;
-            _TotalAnalyticalEntries = 0;
-            _TotalHypothesis = 0;
-            _TotalUniqueSolutions = 0;
+            ViewModel = new SudokuSolverViewModel();
+            ViewModel.Solutions = new List<Puzzle>();
+            ViewModel.TotalAnalyticalEntries = 0;
+            ViewModel.TotalHypothesis = 0;
+            ViewModel.TotalUniqueSolutions = 0;
+
+            puzzle.CanSolve = true;
+            puzzle.Solved = false;
 
             _Puzzles = new List<Puzzle> ();
-            var array = new int?[9][];
-
-            if (rowCSVstrings == null || rowCSVstrings.Length != 9)
-            {
-                throw new FormatException("Error: Sudoku.cs constructor's rowCSVstrings property must be a string array of 9 comma-seperated-value strings.  Each string must have 0-9 integers between 1 and 9.  Use empty string for numbers you do not know the value of.");
-            }
-
-            for (int x = 0; x < 9; x++)
-            {
-                int?[] row = new int?[9];
-
-                var rowItemsAsStrings = rowCSVstrings[x].Split(',');
-                if (rowItemsAsStrings.Length != 9)
-                {
-                    throw new FormatException("Error: Sudoku.cs constructor's rowCSVstrings property must be a string array of 9 comma-seperated-value strings.  Each string must have 0-9 integers between 1 and 9.  Use empty string for numbers you do not know the value of.");
-                }
-
-                for (int y = 0; y < 9; y++) // For each row
-                {
-                    int value;
-                    int.TryParse(rowItemsAsStrings[y].Trim(), out value);
-
-                    if (value >= 1 && value <= 9) // For each integer in each row
-                    {
-                        row[y] = value;
-                    }
-                    else
-                    {
-                        row[y] = null;
-                    }
-                }
-
-                array[x] = row;
-            }
-
-            var puzzle = new Puzzle() { Solved = false, CanSolve = true, Array = array };
             _Puzzles.Add(puzzle);
             _PuzzleCount++;
 
-            Console.WriteLine("This is the Sudoku we will try to solve:");
-            DisplaySudokuInConsole(puzzle);
-
             SolveAllPuzzlesRecursively();
 
-            Console.WriteLine("\nSolutions will appear below:\n");
             foreach (var p in _Puzzles.Where(x => x.Solved == true && x.CanSolve == true))
             {
-                _TotalUniqueSolutions++;
-                DisplaySudokuInConsole(p);
+                ViewModel.TotalUniqueSolutions++;
+                ViewModel.Solutions.Add(p);
             }
 
-            Console.WriteLine("Total unique solutions: " + _TotalUniqueSolutions + ".");
-            Console.WriteLine("Total analytical entries required: " + _TotalAnalyticalEntries + ".");
-            Console.WriteLine("Total hypothetical guesses required: " + _TotalHypothesis + ".");
-            Console.WriteLine("Total processing duration: " + (DateTime.UtcNow - _StartTime));
-
-            System.Threading.Thread.Sleep(10000000);
+            ViewModel.ProcessingDuration = DateTime.UtcNow - _StartTime;
         }
         #endregion
 
         #region Private methods
-        private void DisplaySudokuInConsole(Puzzle puzzle)
-        {
-            Console.WriteLine("\nPuzzle {Solved:" + puzzle.Solved + ", CanSolve: " + puzzle.CanSolve + "}");
-            for (int x = 0; x < 9; x++)
-            {
-                Console.WriteLine(
-                    " " + puzzle.Array[x][0].ToString() + " " +
-                    " " + puzzle.Array[x][1].ToString() + " " +
-                    " " + puzzle.Array[x][2].ToString() + " " +
-                    " " + puzzle.Array[x][3].ToString() + " " +
-                    " " + puzzle.Array[x][4].ToString() + " " +
-                    " " + puzzle.Array[x][5].ToString() + " " +
-                    " " + puzzle.Array[x][6].ToString() + " " +
-                    " " + puzzle.Array[x][7].ToString() + " " +
-                    " " + puzzle.Array[x][8].ToString() + "");
-            }
-            Console.WriteLine("\n");
-        }
-
         private void SolveAllPuzzlesRecursively()
         {
             var hasUnsolvedPuzzles = true;
@@ -170,9 +109,7 @@ namespace ConsoleApp.Models
             }
             if (solved == true)
             {
-                Console.WriteLine("\nPuzzle is solved!!!!");
                 puzzle.Solved = true;
-                DisplaySudokuInConsole(puzzle);
                 return;
             }
             puzzle.CanSolve = false;
@@ -187,7 +124,7 @@ namespace ConsoleApp.Models
 
         private void SplitPuzzleForMultipleHypothesis(Puzzle puzzle, int hypothesisLevel)
         {
-            _TotalHypothesis = _TotalHypothesis + hypothesisLevel;
+            ViewModel.TotalHypothesis = ViewModel.TotalHypothesis + hypothesisLevel;
             for (int x = 0; x < 9; x++)
             {
                 for (int y = 0; y < 9; y++)
@@ -228,7 +165,7 @@ namespace ConsoleApp.Models
 
         private void SetValueForCoordinate(Puzzle puzzle, int x, int y, int? value)
         {
-            _TotalAnalyticalEntries++;
+            ViewModel.TotalAnalyticalEntries++;
             puzzle.Array[x][y] = value;
         }
 
