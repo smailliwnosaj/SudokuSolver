@@ -22,6 +22,7 @@ namespace ConsoleApp
             // START OF SUDOKU PUZZLE SAMPLES
 
             // Typical "Easy" puzzle
+            // 38 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 43.
             // Total hypothetical guesses required: 0.
@@ -45,6 +46,7 @@ namespace ConsoleApp
             // This puzzle requires making hypothetical guesses about 800k times.
             // For each hypothetical guess, the code will split the puzzle into multiple puzzles.
             // The code will solve each of 1748499 puzzles until it finds the one unique solution.
+            // 17 provided numbers
             //var puzzle = new string[9] {
             //    " ,5, , ,1, , , , ",
             //    " , , , , , ,4,6, ",
@@ -58,6 +60,7 @@ namespace ConsoleApp
             //};
 
             // Non-Sudoku puzzle.  This is not a Sudoku because it has more than one solution.
+            // 24 provided numbers
             // Total unique solutions: 8.
             // Total analytical entries required: 12504.
             // Total hypothetical guesses required: 4592.
@@ -75,6 +78,7 @@ namespace ConsoleApp
             //};
 
             // Hard Sudoku
+            // 23 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 20804.
             // Total hypothetical guesses required: 5662.
@@ -97,6 +101,7 @@ namespace ConsoleApp
             // to anyone but the most brilliant.For reference, most Sudoku grids are graded on a five - star scale, 
             // where five stars denotes the most challenging puzzles. According to this ranking system, 
             // Inkala rated Everest an eleven
+            // 21 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 215825.
             // Total hypothetical guesses required: 75066.
@@ -118,6 +123,7 @@ namespace ConsoleApp
             // If you're open for the challenge, AI Escargot presumably requires you to wrap your brain around eight casual 
             // relationships simultaneously, whereas your everyday "very hard" sudoku piece, only require you to think about 
             // a meager one or two of these relationships at once.
+            // 24 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 12553.
             // Total hypothetical guesses required: 2800.
@@ -135,6 +141,7 @@ namespace ConsoleApp
             //};
 
             // The brainchild of Finnish mathematical whizz Arto Inkala, it took him three months to compile. 
+            // 23 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 6349.
             // Total hypothetical guesses required: 1017.
@@ -152,6 +159,7 @@ namespace ConsoleApp
             //};
 
             // http://sw-amt.ws/sudoku/level-very-deep/zz-www.sudokuwiki.org-0177-base/zz-www.sudokuwiki.org-0177-base.html
+            // 23 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 89827.
             // Total hypothetical guesses required: 22299.
@@ -169,6 +177,7 @@ namespace ConsoleApp
             //};
 
             // http://sw-amt.ws/sudoku/level-very-deep/zz-www.sudokuwiki.org-0249-base/zz-www.sudokuwiki.org-0249-base.html
+            // 23 provided numbers
             // Total unique solutions: 1.
             // Total analytical entries required: 338146.
             // Total hypothetical guesses required: 106540.
